@@ -1,5 +1,5 @@
 {
-  "name": "codebricks",
+  "name": "@1oscar089/codebricks",
   "version": "1.0.0",
   "description": "Librería de componentes UI en Vanilla JS con Vite",
   "type": "module",
