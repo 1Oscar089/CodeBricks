@@ -1,6 +1,6 @@
 {
   "name": "@1oscar089/codebricks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Librería de componentes UI en Vanilla JS con Vite",
   "type": "module",
   "files": [
@@ -23,7 +23,12 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "keywords": ["vanilla", "ui", "codebricks", "componentes"],
+  "keywords": [
+    "vanilla",
+    "ui",
+    "codebricks",
+    "componentes"
+  ],
   "author": "Tu Nombre",
   "license": "MIT",
   "devDependencies": {
