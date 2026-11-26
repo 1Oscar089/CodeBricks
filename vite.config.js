@@ -4,16 +4,17 @@ import { resolve } from 'path';
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.js'),
-      name: 'CodeBricks', // ← nombre global en el navegador: window.CodeBricks
+      // Usamos import.meta.dirname en lugar de __dirname
+      entry: resolve(import.meta.dirname, 'src/index.js'),
+      name: 'CodeBricks',
       fileName: (format) => {
         if (format === 'es') return 'codebricks.js';
         if (format === 'umd') return 'codebricks.umd.cjs';
         return `codebricks.${format}.js`;
       },
-      formats: ['es', 'umd'], // ES para npm, UMD para script/CDN
+      formats: ['es', 'umd'],
     },
     rollupOptions: {},
-    cssCodeSplit: false, // extrae todo el CSS en un solo archivo: style.css
+    cssCodeSplit: false,
   },
 });

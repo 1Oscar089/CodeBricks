@@ -3,7 +3,7 @@ name: Publish to npm
 on:
   push:
     tags:
-      - 'v*'  # se dispara al hacer push de un tag como v1.0.1
+      - 'v*' # Se dispara con cualquier tag que empiece por v (ej. v1.0.2 o v1.0.2-beta.0)
 
 jobs:
   publish:
@@ -27,7 +27,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Publish
+      - name: Publish Beta
+        if: contains(github.ref_name, '-beta')
+        run: npm publish --tag beta --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Stable
+        if: "!contains(github.ref_name, '-beta')"
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

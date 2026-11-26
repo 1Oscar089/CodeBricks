@@ -1,4 +1,7 @@
 npm install @1oscar089/codebricks
+npm install @1oscar089/codebricks@beta
+
+npm update @1oscar089/codebricks
 Uso: 
     import { createProfileCard, createBadge } from '@1oscar089/codebricks';
     import '@1oscar089/codebricks/style.css';
