@@ -7,5 +7,12 @@ Uso:
     import '@1oscar089/codebricks/style.css';
 
 CDN
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@1.0.0/dist/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@1.0.0/dist/codebricks.css">
 <script src="https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@1.0.0"></script>
+
+
+Como instalar beta:
+git add .
+git commit -m "feat: nuevos componentes para la beta"
+npm version prerelease --preid=beta
+git push --follow-tags
