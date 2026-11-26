@@ -13,7 +13,8 @@
       "import": "./dist/codebricks.js",
       "require": "./dist/codebricks.umd.cjs"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/codebricks.css",
+    "./codebricks.css": "./dist/codebricks.css"
   },
   "unpkg": "./dist/codebricks.umd.cjs",
   "jsdelivr": "./dist/codebricks.umd.cjs",
