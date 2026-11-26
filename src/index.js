@@ -19,7 +19,7 @@ export function createBadge(text, color = 'blue') {
  * @returns {string} HTML de la tarjeta.
  */
 export function createProfileCard({ name, role, badge }) {
-  const badgeHtml = badge ? createBadge(badge) : '';
+  const badgeHtml = badge ? createBadge(badge, "red") : '';
   return `
     <div class="mi-card">
       <h2 class="mi-card__name">${name}</h2>

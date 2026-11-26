@@ -1,0 +1,141 @@
+====================================================================
+                 COMANDOS DE CODEBRICKS
+====================================================================
+
+--------------------------------------------------------------------
+1. PUBLICAR UNA VERSIÓN BETA (Para probar cambios)
+--------------------------------------------------------------------
+# 1. Ver qué archivos has modificado
+git status
+
+# 2. Guardar los cambios en Git
+git add .
+git commit -m "feat: descripcion de mis cambios"
+
+# 3. Crear la versión beta (pasa de 1.0.1 a 1.0.2-beta.0)
+npm version prerelease --preid=beta
+
+# 4. Subir a GitHub (esto activa el Action que publica en npm)
+git push origin main --tags
+
+# * Nota: Si olvidaste configurar el secreto NPM_TOKEN en GitHub, el Action fallará.
+
+--------------------------------------------------------------------
+2. PUBLICAR UNA VERSIÓN ESTABLE (Para el público)
+--------------------------------------------------------------------
+# 1. Guardar cambios
+git add .
+git commit -m "chore: version estable lista"
+
+# 2. Subir la versión (Elige UNA de estas según el cambio)
+npm version patch   # Arreglo de bug (1.0.2 -> 1.0.3)
+npm version minor   # Nueva función (1.0.2 -> 1.1.0)
+npm version major   # Cambio que rompe el código anterior (1.0.2 -> 2.0.0)
+
+# 3. Subir a GitHub
+git push origin main --tags
+
+-----------------Solo guardar en github---------------
+# 1. Prepara todos los archivos modificados
+git add .
+
+# 2. Crea un "punto de guardado" (commit)
+git commit -m "wip: guardando progreso por emergencia"
+
+# 3. Súbelo a GitHub (¡sin etiquetas!)
+git push origin main
+
+--------------------------------------------------------------------
+3. CÓMO USAR LA LIBRERÍA EN TUS PROYECTOS
+--------------------------------------------------------------------
+
+--- FORMA A: Instalación por NPM (Recomendado para Vite/React/Vue) ---
+# En la terminal del proyecto donde la quieres usar:
+npm install @1oscar089/codebricks            # Instala la última estable
+npm install @1oscar089/codebricks@beta       # Instala la última beta
+
+# En tu archivo JavaScript/TypeScript:
+import { createProfileCard, createBadge } from '@1oscar089/codebricks';
+import '@1oscar089/codebricks/style.css'; // Gracias al alias en package.json, esto funciona
+
+document.getElementById('app').innerHTML = createProfileCard({
+  name: 'Ana García',
+  role: 'Developer',
+  badge: 'Pro'
+});
+
+
+--- FORMA B: CDN (Para HTML plano, sin Node.js) ---
+# Pega esto en el <head> de tu HTML:
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@latest/dist/codebricks.css">
+<script src="https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@latest"></script>
+
+# Y usa la variable global "CodeBricks" en tu HTML:
+<script>
+  document.body.innerHTML = CodeBricks.createProfileCard({
+    name: 'Carlos Ruiz',
+    role: 'Diseñador'
+  });
+</script>
+
+# * Nota: Si quieres una versión específica, cambia "@latest" por "@1.0.2".
+# * Nota: Si usas la versión @beta en CDN, debes poner la versión exacta (ej. @1.0.2-beta.0).
+
+
+--- FORMA C: Archivo Único (Descargado) ---
+# 1. Descarga el JS: https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@latest/dist/codebricks.umd.cjs
+# 2. Descarga el CSS: https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@latest/dist/codebricks.css
+# 3. Ponlos en tu proyecto y enlázalos:
+<link rel="stylesheet" href="./codebricks.css">
+<script src="./codebricks.umd.cjs"></script>
+<script>
+  // Usa CodeBricks.createProfileCard()
+</script>
+
+--------------------------------------------------------------------
+4. CLONAR EN UNA COMPUTADORA NUEVA (Setup)
+--------------------------------------------------------------------
+# 1. Clonar el repositorio (requiere tener SSH configurado)
+git clone git@github.com:1Oscar089/CodeBricks.git
+cd CodeBricks
+
+# 2. Instalar dependencias (Vite, etc.)
+npm install
+
+# 3. Iniciar el servidor local para ver la demo (index.html)
+npm run dev
+
+# 4. Si quieres publicar manualmente (opcional, sin GitHub Actions)
+npm login
+npm run build
+npm publish --access public
+
+--------------------------------------------------------------------
+5. COMANDOS EXTRA (Pro-tips para el día a día)
+--------------------------------------------------------------------
+
+# Ver la versión actual de tu package.json
+npm pkg get version
+
+# Ver qué archivos exactos se van a subir a npm antes de publicar
+npm pack --dry-run
+
+# Probar tu librería en OTRO proyecto de tu PC sin publicarla en npm:
+# (Útil para hacer pruebas rápidas)
+cd /ruta/a/CodeBricks
+npm link
+
+cd /ruta/a/tu/ProyectoDePrueba
+npm link @1oscar089/codebricks
+# (Cuando termines de probar, usa: npm unlink @1oscar089/codebricks)
+
+# Si borraste node_modules por error o falla el npm install:
+rm -rf node_modules package-lock.json
+npm cache clean --force
+npm install
+
+# Limpiar el repositorio de GitHub forzando que sea igual a tu PC
+git rm -r --cached .
+git add .
+git commit -m "chore: limpieza"
+git push --force origin main
