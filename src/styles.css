@@ -1,0 +1,29 @@
+.mi-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+.mi-badge--blue { background-color: #3b82f6; }
+.mi-badge--green { background-color: #10b981; }
+.mi-badge--red { background-color: #ef4444; }
+
+.mi-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  background: #fff;
+  max-width: 280px;
+  font-family: system-ui, sans-serif;
+}
+.mi-card__name {
+  margin: 0 0 0.25rem;
+  font-size: 1.125rem;
+}
+.mi-card__role {
+  margin: 0 0 0.75rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+}

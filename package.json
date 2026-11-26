@@ -1,0 +1,31 @@
+{
+  "name": "codebricks",
+  "version": "1.0.0",
+  "description": "Librería de componentes UI en Vanilla JS con Vite",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/codebricks.umd.cjs",
+  "module": "./dist/codebricks.js",
+  "exports": {
+    ".": {
+      "import": "./dist/codebricks.js",
+      "require": "./dist/codebricks.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "unpkg": "./dist/codebricks.umd.cjs",
+  "jsdelivr": "./dist/codebricks.umd.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["vanilla", "ui", "codebricks", "componentes"],
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
