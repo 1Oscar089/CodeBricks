@@ -70,6 +70,13 @@ document.getElementById('app').innerHTML = createProfileCard({
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@latest/dist/codebricks.css">
 <script src="https://cdn.jsdelivr.net/npm/@1oscar089/codebricks@latest"></script>
 
+<link rel="stylesheet" href="https://unpkg.com/@1oscar089/codebricks@latest/dist/codebricks.css">
+<script src="https://unpkg.com/@1oscar089/codebricks@latest"></script>
+
+-----Beta--------
+<link rel="stylesheet" href="https://unpkg.com/@1oscar089/codebricks@beta/dist/codebricks.css">
+<script src="https://unpkg.com/@1oscar089/codebricks@beta"></script>
+
 # Y usa la variable global "CodeBricks" en tu HTML:
 <script>
   document.body.innerHTML = CodeBricks.createProfileCard({

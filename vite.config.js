@@ -9,7 +9,7 @@ export default defineConfig({
       name: 'CodeBricks',
       fileName: (format) => {
         if (format === 'es') return 'codebricks.js';
-        if (format === 'umd') return 'codebricks.umd.cjs';
+        if (format === 'umd') return 'codebricks.umd.js';
         return `codebricks.${format}.js`;
       },
       formats: ['es', 'umd'],
